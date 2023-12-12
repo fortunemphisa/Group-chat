@@ -157,19 +157,18 @@ public class Client implements ActionListener {
         new Client();
         
         try {
-            Socket s = new Socket("127.0.0.1", 6001);
+            Socket s = new Socket("127.0.0.1", 6001);//Socket Initialization
             DataInputStream din = new DataInputStream(s.getInputStream());
-            dout = new DataOutputStream(s.getOutputStream());
+            dout = new DataOutputStream(s.getOutputStream()); //creates a new socket and connects it to the specified server address 
             
-            while(true) {
+            while(true) { 
                 a1.setLayout(new BorderLayout());
-                String msg = din.readUTF();
+                String msg = din.readUTF(); //waits for data to be available on the input stream and then reads the string.
                 JPanel panel = formatLabel(msg);
 
                 JPanel left = new JPanel(new BorderLayout());
                 left.add(panel, BorderLayout.LINE_START);
                 vertical.add(left);
-                
                 vertical.add(Box.createVerticalStrut(15));
                 a1.add(vertical, BorderLayout.PAGE_START);
                 
