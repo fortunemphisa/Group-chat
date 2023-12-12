@@ -8,14 +8,14 @@ import java.text.*;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
-
+// used to handle action events, like button clicks or menu selections
 public class Server implements ActionListener {
-    
+    //Swing for creating a graphical user interface (GUI)
     JTextField text;
     JPanel a1;
     static Box vertical = Box.createVerticalBox();
     static JFrame f = new JFrame();
-    static DataOutputStream dout;
+    static DataOutputStream dout;//class is part of Java's I/O (Input/Output) classes
     
     Server() {
         
@@ -44,7 +44,7 @@ public class Server implements ActionListener {
         Image i5 = i4.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
         ImageIcon i6 = new ImageIcon(i5);
         JLabel profile = new JLabel(i6);
-        profile.setBounds(40, 10, 50, 50);
+        profile.setBounds(40, 10, 50, 50);//setBounds method sets the position and size of the JLabel within its container.
         p1.add(profile);
         
         ImageIcon i7 = new ImageIcon(ClassLoader.getSystemResource("icons/video.png"));
@@ -84,7 +84,7 @@ public class Server implements ActionListener {
         a1.setBounds(5, 75, 440, 570);
         f.add(a1);
         
-        text = new JTextField();
+        text = new JTextField();//for the message that is sent
         text.setBounds(5, 655, 310, 40);
         text.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
         f.add(text);
@@ -101,7 +101,6 @@ public class Server implements ActionListener {
         f.setLocation(200, 50);
         f.setUndecorated(true);
         f.getContentPane().setBackground(Color.WHITE);
-        
         f.setVisible(true);
     }
     
@@ -160,6 +159,7 @@ public class Server implements ActionListener {
         
         try {
             ServerSocket skt = new ServerSocket(6001);
+            //It then processes the received message by calling a method named formatLabel(msg)
             while(true) {
                 Socket s = skt.accept();
                 DataInputStream din = new DataInputStream(s.getInputStream());
