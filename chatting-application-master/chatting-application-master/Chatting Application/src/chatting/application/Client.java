@@ -105,7 +105,7 @@ public class Client implements ActionListener {
     
     public void actionPerformed(ActionEvent ae) {
         try {
-            String out = text.getText();
+            String out = text.getText();//Retrieves the text content from a text object.
 
             JPanel p2 = formatLabel(out);
 
@@ -123,7 +123,7 @@ public class Client implements ActionListener {
             text.setText("");
 
             f.repaint();
-            f.invalidate();
+            f.invalidate();//refresh the GUI after making changes
             f.validate();
         } catch (Exception e) {
             e.printStackTrace();
